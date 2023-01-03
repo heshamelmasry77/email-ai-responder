@@ -8,5 +8,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 );
-npm install husky --save-dev 
-npx husky-init                 npm install lint-staged --save-dev   
