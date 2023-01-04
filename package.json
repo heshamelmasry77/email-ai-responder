@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-ex": "npm run build && cp ./manifest.json dist/ ",
     "preview": "vite preview",
     "lint": "eslint src/**/*.jsx",
     "lint-fix": "eslint --fix src/**/*.jsx"
