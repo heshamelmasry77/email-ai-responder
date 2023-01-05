@@ -12,7 +12,7 @@ const openai = new OpenAIApi(configuration);
 
 const completion = await openai.createCompletion({
   model: 'text-davinci-003',
-  prompt: 'if the api is working, just write "test is ok" ',
+  prompt: 'if the api is working, just write "test is ok"',
   temperature: 0.6,
   max_tokens: 10,
 });
@@ -22,6 +22,6 @@ app.get('/', (req, res) => {
   res.send(response);
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Listening on port 3000');
 });
