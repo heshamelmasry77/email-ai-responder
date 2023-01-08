@@ -1,1 +1,7 @@
 *.config.cjs
+
+node_modules
+
+dist
+.husky
+public
