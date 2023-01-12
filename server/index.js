@@ -1,10 +1,14 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { Configuration, OpenAIApi } from 'openai';
 import bodyParser from 'body-parser';
 
 dotenv.config();
+
+// eslint-disable-next-line no-underscore-dangle
+const __dirname = path.resolve();
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,6 +20,13 @@ const configuration = new Configuration({
   apiKey: process.env.CHAT_GPT_KEY,
 });
 const openai = new OpenAIApi(configuration);
+
+// add middlewares
+app.use('/', express.static(path.join(__dirname, '../dist')));
+
+app.get('/*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
 
 app.post(process.env.CREATE_AI_URL, async (req, res) => {
   const {
