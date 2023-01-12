@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 import EmailResponseComponent from './EmailResponseComponent';
 import LoadingSpinner from './LoadingSpinner';
 
+const variables = {
+  apiURL: import.meta.env.VITE_API_URL,
+  chatAiURL: import.meta.env.VITE_CREATE_AI_URL,
+};
+console.log("react variable test", variables.apiURL + variables.chatAiURL);
 function App() {
   const [message, setMessage] = useState('');
   const [mood, setMood] = useState('proffesional');
@@ -19,7 +24,7 @@ function App() {
     e.preventDefault();
     try {
       setResponse(<LoadingSpinner />);
-      const apiResponse = await fetch('http://localhost:3001/api/createai', {
+      const apiResponse = await fetch(variables.apiURL + variables.chatAiURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +55,6 @@ function App() {
     if (emailType === 'buisness') return 'Your companys name';
     return 'Your name';
   };
-
   return (
     <main className="flex flex-col-reverse md:flex-row w-full gap-10 text-left text-gray-200 h-fit relative backdrop-blur-sm">
       <div className="md:sticky md:top-5 flex flex-col gap-4 p-8 rounded-3xl w-full md:w-2/4 h-fit min-h-[150px] bg-[#121212]/80 break-words">
