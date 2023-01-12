@@ -12,7 +12,9 @@ const __dirname = path.resolve();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 
 const PORT = 3001;
 
