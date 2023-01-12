@@ -19,7 +19,7 @@ function App() {
     e.preventDefault();
     try {
       setResponse(<LoadingSpinner />);
-      const apiResponse = await fetch('http://localhost:3001/', {
+      const apiResponse = await fetch('http://localhost:3001/api/createai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,9 @@ function App() {
     <main className="flex flex-col-reverse md:flex-row w-full gap-10 text-left text-gray-200 h-fit relative backdrop-blur-sm">
       <div className="md:sticky md:top-5 flex flex-col gap-4 p-8 rounded-3xl w-full md:w-2/4 h-fit min-h-[150px] bg-[#121212]/80 break-words">
         {/* <h2 className="font-medium border-b text-xl pb-3"> Email Response </h2> */}
-        <pre className="flex flex-col gap-4 whitespace-pre-wrap font-inter">{response}</pre>
+        <pre className="flex flex-col gap-4 whitespace-pre-wrap font-inter">
+          {response}
+        </pre>
         {copyButton}
       </div>
       <form
@@ -64,7 +66,10 @@ function App() {
       >
         <h1 className=" text-2xl font-bold">Email Responder Generator</h1>
         <div className="flex gap-4 w-full">
-          <label className="w-full flex flex-col gap-2 font-bold" htmlFor="language">
+          <label
+            className="w-full flex flex-col gap-2 font-bold"
+            htmlFor="language"
+          >
             language
             <select
               id="language"
@@ -78,7 +83,10 @@ function App() {
               <option value="german">🇩🇪 German</option>
             </select>
           </label>
-          <label className="font-bold w-full flex flex-col gap-2" htmlFor="emailType">
+          <label
+            className="font-bold w-full flex flex-col gap-2"
+            htmlFor="emailType"
+          >
             Email Type
             <select
               id="emailType"
@@ -91,9 +99,17 @@ function App() {
             </select>
           </label>
         </div>
-        <label className="font-bold w-full flex flex-col gap-2" htmlFor="responseTone">
+        <label
+          className="font-bold w-full flex flex-col gap-2"
+          htmlFor="responseTone"
+        >
           Tone of response
-          <select id="responseTone" className="input" value={mood} onChange={(e) => setMood(e.target.value)}>
+          <select
+            id="responseTone"
+            className="input"
+            value={mood}
+            onChange={(e) => setMood(e.target.value)}
+          >
             <option value="proffesional"> proffesional </option>
             <option value="funny"> funny </option>
             <option value="negative"> negative </option>
