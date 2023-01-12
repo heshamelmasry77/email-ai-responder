@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-image: url(./assets/thomas-lefebvre-mT1uxKaegSQ-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg duration-200;
+  }
+  .round-btn {
+    @apply w-10 h-10 rounded-full duration-200 hover:scale-110;
+  }
+  .btn-orange {
+    @apply btn bg-[#5BBC65] text-white hover:bg-[#45974d] disabled:bg-gray-500;
+  }
+  .input {
+    @apply rounded-md p-2 border border-[#ADADAD] text-gray-300 bg-transparent capitalize font-normal;
+  }
+  option {
+    @apply text-gray-700;
+  }
+}
