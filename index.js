@@ -19,8 +19,10 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-app.post('/api/createai', async (req, res) => {
-  const { message, mood, context, emailType, name, language } = req.body;
+app.post(process.env.CREATE_AI_URL, async (req, res) => {
+  const {
+    message, mood, context, emailType, name, language,
+  } = req.body;
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `Write a response to the following email in ${language}. Please ensure that the response is written in the same language as the email, unless otherwise specified. The tone of the response should be ${mood}. This is a(n) ${emailType}. Your name is ${name}. If necessary, please use the following additional context to inform your response: ${context} Email provided: '${message}'`,
@@ -43,5 +45,5 @@ app.post('/api/createai', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Listening on port 3000');
-  console.log(process.env.NODE_ENV);
+  console.log(process.env.CREATE_AI_URL);
 });
