@@ -24,7 +24,7 @@ function App() {
     e.preventDefault();
     try {
       setResponse(<LoadingSpinner />);
-      const apiResponse = await fetch(variables.apiURL + variables.chatAiURL, {
+      const apiResponse = await fetch('https://email-ai-responder-be.vercel.app/api/createai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
