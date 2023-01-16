@@ -3,11 +3,6 @@ import React, { useState } from 'react';
 import EmailResponseComponent from './EmailResponseComponent';
 import LoadingSpinner from './LoadingSpinner';
 
-const variables = {
-  apiURL: import.meta.env.VITE_API_URL,
-  chatAiURL: import.meta.env.VITE_CREATE_AI_URL,
-};
-console.log("react variable test", variables.apiURL + variables.chatAiURL);
 function App() {
   const [message, setMessage] = useState('');
   const [mood, setMood] = useState('proffesional');
